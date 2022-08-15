@@ -14,20 +14,9 @@ const App = () => {
 
   const [tasks, setTasks] = useState([]);
   const [load, setLoad] = useState(false);
-
-  const verifyConn = () => {
-    window.ethereum
-      .request({ method: "eth_requestAccounts" })
-      .then((result) => {
-        setAddress(result[0]);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  }
-
+ 
   useEffect(() => {
-    verifyConn();
+    handleConnect();
     if (address) {
       if (!contract) {
         createProvider();
@@ -95,8 +84,7 @@ const App = () => {
     } else {
       console.log("Need to install MetaMask");
       alert("Please install MetaMask browser extension to interact");
-    }
-    verifyConn();
+    } 
   };
 
   const radioclick = async (i) => {
