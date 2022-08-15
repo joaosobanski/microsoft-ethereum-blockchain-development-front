@@ -1,4 +1,4 @@
- # windows-ethereum-blockchain-development-front
+ # microsoft-ethereum-blockchain-development-front
  this repository was created to consume the smart contract created in a blockchain course
  
 </br>
