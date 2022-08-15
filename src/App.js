@@ -142,6 +142,10 @@ const App = () => {
           {`This Contract is running in `}
           <a href='https://ropsten.etherscan.io/address/0xd6643ad09303290558303fcc38e6e8f87272b6cd' target='_blank'>Ropsten Etherscan</a>
         </label>
+        <label>
+          {`to test you will need eth faucet `}
+          <a href='https://faucet.egorfine.com/' target='_blank'>Get Faucet Eth Ropsten</a>
+        </label>
         <a href='https://github.com/joaosobanski/windows-ethereum-blockchain-development-front' target='_blank'>GitHub Project Front End</a>
         <a href='https://github.com/joaosobanski/windows-ethereum-blockchain-development' target='_blank'>GitHub Project Back End</a>
         <body className='body'>
