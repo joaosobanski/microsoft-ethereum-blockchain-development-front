@@ -14,7 +14,7 @@ const App = () => {
 
   const [tasks, setTasks] = useState([]);
   const [load, setLoad] = useState(false);
- 
+
   useEffect(() => {
     handleConnect();
     if (address) {
@@ -61,6 +61,18 @@ const App = () => {
 
 
   const handleConnect = async () => {
+
+    const chainId_ = await window.ethereum.request({ method: "eth_chainId" });
+
+    await window.ethereum
+      .request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x3" }],
+      })
+      .then((e) => {
+        setChainId(chainId_);
+      });
+
     if (window.ethereum && window.ethereum.isMetaMask) {
       window.ethereum
         .request({ method: "eth_requestAccounts" })
@@ -71,20 +83,10 @@ const App = () => {
           alert(error.message);
         });
 
-      const chainId_ = await window.ethereum.request({ method: "eth_chainId" });
-
-      await window.ethereum
-        .request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x3" }],
-        })
-        .then((e) => {
-          setChainId(chainId_);
-        });
     } else {
       console.log("Need to install MetaMask");
       alert("Please install MetaMask browser extension to interact");
-    } 
+    }
   };
 
   const radioclick = async (i) => {
